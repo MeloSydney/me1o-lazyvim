@@ -1,0 +1,13 @@
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "c", "cpp", "python", "javascript", "typescript", -- 根据需要添加
+      },
+      highlight = { enable = true },
+      incremental_selection = { enable = true },
+      textobjects = { enable = true },
+    }
+  }
+}

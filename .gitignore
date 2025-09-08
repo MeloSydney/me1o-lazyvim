@@ -6,3 +6,10 @@ debug
 foo.*
 *.log
 data
+.lazy/
+*.lock
+session.vim
+
+!.config/nvim/init.lua
+!.config/nvim/lua/
+!.config/nvim/plugin/
