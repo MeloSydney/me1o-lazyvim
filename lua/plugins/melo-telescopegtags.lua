@@ -8,19 +8,6 @@ return {
     },
     config = function()
         require('telescope').load_extension('gtags')
-        -- C/C++ 文件里用 gtags 接管 gd/gr（LSP 不可用时）
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = { 'c', 'cpp', 'h', 'hpp', 'cxx', 'hxx', 'cc', 'hh' },
-            callback = function(args)
-                local opts = { buffer = args.buf, silent = true, remap = false }
-                vim.keymap.set('n', 'gd',
-                    '<cmd>Telescope gtags_definitions file_encoding=cp932 initial_mode=normal<cr>',
-                    vim.tbl_extend('force', opts, { desc = 'Goto Definition (gtags)' }))
-                vim.keymap.set('n', 'gr',
-                    '<cmd>let @/=expand("<cword>") | set hlsearch | Telescope gtags_references file_encoding=cp932 initial_mode=normal<cr>',
-                    vim.tbl_extend('force', opts, { desc = 'References (gtags)' }))
-            end,
-        })
     end,
     {
     "ukyouz/telescope-gtags",

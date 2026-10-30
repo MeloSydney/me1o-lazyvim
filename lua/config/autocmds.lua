@@ -28,3 +28,23 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = false
   end,
 })
+
+-- Melo: C/C++ 文件用 gtags 接管 gd/gr（按需加载 telescope-gtags）
+-- autocmd 在启动期注册（不依赖 telescope-gtags 的 lazy 加载），
+-- 首次按 gd/gr 时再 require telescope → load_extension('gtags') 触发加载
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("melo_gtags_gd", { clear = true }),
+  pattern = { "c", "cpp", "h", "hpp", "cxx", "hxx", "cc", "hh" },
+  callback = function(args)
+    local opts = { buffer = args.buf, silent = true, remap = false }
+    vim.keymap.set("n", "gd", function()
+      require("telescope").load_extension("gtags")
+      vim.cmd("Telescope gtags_definitions file_encoding=cp932 initial_mode=normal")
+    end, vim.tbl_extend("force", opts, { desc = "Goto Definition (gtags)" }))
+    vim.keymap.set("n", "gr", function()
+      vim.cmd('let @/=expand("<cword>") | set hlsearch')
+      require("telescope").load_extension("gtags")
+      vim.cmd("Telescope gtags_references file_encoding=cp932 initial_mode=normal")
+    end, vim.tbl_extend("force", opts, { desc = "References (gtags)" }))
+  end,
+})
