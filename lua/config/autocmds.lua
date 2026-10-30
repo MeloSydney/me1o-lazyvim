@@ -18,3 +18,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.softtabstop = 2
   end,
 })
+
+-- Melo config: 关闭 LazyVim 默认拼写检查（中文被全判拼错画 undercurl 波浪线），保留换行
+pcall(vim.api.nvim_del_augroup_by_name, "lazyvim_wrap_spell")
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "gitrebase", "NeogitCommitMessage", "markdown", "text" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = false
+  end,
+})

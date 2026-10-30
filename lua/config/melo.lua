@@ -94,21 +94,6 @@ if vim.g.vscode then
         end,
     }
 
-    -- 需要安装 bookmarks 插件使用
-    local bookmarks = {
-        jumpToPrevious = function()
-            vim.fn.VSCodeNotify("bookmarks.jumpToPrevious")
-        end,
-        jumpToNext = function()
-            vim.fn.VSCodeNotify("bookmarks.jumpToNext")
-        end,
-        toggle = function()
-            vim.fn.VSCodeNotify("bookmarks.toggle")
-        end,
-        clear = function()
-            vim.fn.VSCodeNotify("bookmarks.clearFromAllFiles")
-        end,
-    }
 
     local tab = {
         closeCurrentTab = function()
@@ -150,11 +135,6 @@ if vim.g.vscode then
     vim.keymap.set('n', 'zo', fold.unfold)
     vim.keymap.set('n', 'zc', fold.fold)
 
-    -- 书签
-    vim.keymap.set('n', '<leader>bb', bookmarks.toggle)
-    vim.keymap.set('n', '<leader>bc', bookmarks.clear)
-    vim.keymap.set('n', '<leader>bp', bookmarks.jumpToPrevious)
-    vim.keymap.set('n', '<leader>bn', bookmarks.jumpToNext)
 
     -- 窗口
     vim.keymap.set('n', '<leader>wc', tab.closeCurrentTab)
