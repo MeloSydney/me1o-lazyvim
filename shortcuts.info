@@ -26,7 +26,7 @@ Buffer (Melo，注意覆盖了 LazyVim 的 pin)
   <leader>bn                :bn 下一个 buffer   (覆盖 LazyVim 默认)
   [b / ]b                   上/下 buffer        (默认)
 
-折叠 (Melo / VSCode 下)
+折叠 (Melo)
   zR                        全部展开
   zM                        全部折叠
   zo / zc                   当前行 展开 / 折叠
@@ -185,19 +185,6 @@ Buffer (Melo，注意覆盖了 LazyVim 的 pin)
   <C-h>                     左（本配置 normal 下是窗口左）  (Melo)
   jk / jj                   退回 normal（如配了则用）       — 本配置未设，用 <Esc>
   <C-n>/<C-p>               补全菜单 下/上 (noselect)       (Melo, options)
-
-================================================================
-  13. VSCode-Neovim 专用（vim.g.vscode 时生效）
-================================================================
-  zR / zM / zo / zc         调 VSCode foldAll/unfoldAll/fold/unfold
-  <leader>bb                书签 toggle
-  <leader>bc                清除全部书签
-  <leader>bp / <leader>bn   书签 上一个 / 下一个
-  <leader>wc                关当前 tab
-  <leader>wo                关其它 tab
-  <leader>wa                关全部 tab
-  <leader>r                 rename (VSCode)
-  gf / gb                   navigateForward / navigateBack
 
 ================================================================
   附：查看全部 keymap 的方法
