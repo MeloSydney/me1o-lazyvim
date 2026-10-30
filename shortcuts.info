@@ -1,0 +1,216 @@
+================================================================
+  LazyVim 常用快捷键速查  —  me1o-lazyvim
+  Leader = <Space>      |      生成: 1030
+================================================================
+说明：
+  (默认)  = LazyVim 自带
+  (Melo)  = 你在 lua/config/melo.lua 或 lua/plugins/* 里自定义
+  (覆盖)  = 你的自定义覆盖了 LazyVim 默认，注意行为不同
+  <leader> 在本配置里是 空格键
+
+================================================================
+  0. 你的个人自定义（最常用，先记这些）
+================================================================
+窗口移动 (Melo)
+  <C-h>/<C-j>/<C-k>/<C-l>   左/下/上/右 窗口
+  <C-Up>/<C-Down>           垂直 + / - 2 行
+  <C-Left>/<C-Right>        水平 + / - 2 列
+
+文件树 neo-tree / nvim-tree (Melo)
+  <C-n>                     切换文件树
+  <A-n>                     在树中定位当前文件
+  -                         折叠文件树
+
+Buffer (Melo，注意覆盖了 LazyVim 的 pin)
+  <leader>bp                :bp 上一个 buffer   (覆盖 LazyVim pin)
+  <leader>bn                :bn 下一个 buffer   (覆盖 LazyVim 默认)
+  [b / ]b                   上/下 buffer        (默认)
+
+折叠 (Melo / VSCode 下)
+  zR                        全部展开
+  zM                        全部折叠
+  zo / zc                   当前行 展开 / 折叠
+
+搜索增强 (Melo, melo-extras.lua)
+  n / N                     下一个/上一个匹配 + hlslens 计数镜头 (1/12)
+  * / #                     向下/向上 搜当前词
+  ]] / [[                   下一个/上一个 光标词引用 (vim-illuminate)
+
+代码导航 gtags (Melo, melo-telescopegtags.lua, <leader>t* 全部覆盖 LazyVim toggle 组)
+  <leader>tg                Telescope gtags 列表
+  <leader>td                gtags 定义 (覆盖 LazyVim toggle diagnostics)
+  <leader>tr                gtags 引用 (自动把光标词填入搜索)
+  <leader>ts                gtags symbol_usages (覆盖 LazyVim toggle spell)
+  <leader>tt                gtags buffer_symbols (覆盖 LazyVim toggle terminal)
+  注: gtags 用 file_encoding=cp932 (Shift-JIS)，initial_mode=normal
+
+================================================================
+  1. 文件 / 查找     <leader>f
+================================================================
+  <leader>ff                查找文件 (Telescope)            (默认)
+  <leader>fr                最近打开的文件                  (默认)
+  <leader>fg                全局实时 grep (live grep)       (默认)
+  <leader>fb                在 buffer 间查找                (默认)
+  <leader>fh                查找 help 文档                  (默认)
+  <leader>fp                查看 / 管理 插件 (Lazy)         (默认)
+  <leader>fn                new file                        (默认)
+  <leader>fs                保存 (write)                    (默认)
+  <leader>ft                打开底部终端 (toggleterm)       (默认)
+  <leader>fT                tab 终端                        (默认)
+
+================================================================
+  2. 搜索           <leader>s
+================================================================
+  <leader>sg                全局 grep                       (默认)
+  <leader>sw                grep 当前词                     (默认)
+  <leader>ss                当前文件 LSP 符号               (默认)
+  <leader>sS                工作区 LSP 符号                 (默认)
+  <leader>sk                查看所有 keymap                 (默认)
+  <leader>sh                查找 help                       (默认)
+  <leader>sb                在 buffer 内容里搜              (默认)
+  <leader>sc                命令历史                        (默认)
+  <leader>sC                所有命令                        (默认)
+  <leader>sd                搜索 diagnostic                 (默认)
+  <leader>so                options 选项                    (默认)
+
+================================================================
+  3. Buffer          <leader>b      （bp/bn 见上方 Melo 区，已覆盖）
+================================================================
+  <leader>bb                切到上一个 buffer               (默认)
+  <leader>bd                删除当前 buffer                 (默认)
+  <leader>bD                删除到右边的 buffer             (默认)
+  <leader>bl / <leader>bL   删除左/右侧                     (默认)
+  [b / ]b                   上/下 buffer                    (默认)
+  <Tab>                     切最近 buffer (LazyVim)         (默认)
+
+================================================================
+  4. 窗口 / 分屏      <leader>w
+================================================================
+  <leader>wv                垂直分屏 (vsplit)               (默认)
+  <leader>ws                水平分屏 (split)                (默认)
+  <leader>wd                关闭当前窗口                    (默认)
+  <leader>wq                退出窗口                        (默认)
+  <leader>ww                跳到下一个窗口                  (默认)
+  <leader>wh/wj/wk/wl       左/下/上/右 窗口                (默认)
+  （日常移动优先用 <C-h/j/k/l>，见 Melo 区）
+
+================================================================
+  5. 代码 / LSP       <leader>c
+================================================================
+  K                         悬浮文档 (hover)                (默认)
+  gd                        跳定义                          (默认)
+  gD                        跳声明                          (默认)
+  gi                        跳实现                          (默认)
+  gr                        引用 (Telescope)                (默认)
+  gI                        实现 (Telescope)                (默认)
+  <C-k>                     signature help                  (默认)
+  <leader>ca                code action                     (默认)
+  <leader>cr                rename                          (默认)
+  <leader>cf                格式化 (conform)                (默认)
+  <leader>cd                行 diagnostic                   (默认)
+  <leader>cl                LSP info / 行诊断               (默认)
+  ]d / [d                   下/上 diagnostic                (默认)
+  ]e / [e                   下/上 错误                      (默认)
+  ]w / [w                   下/上 警告                      (默认)
+
+================================================================
+  6. Git              <leader>g
+================================================================
+  <leader>gg                打开 lazygit                    (默认)
+  <leader>gd                git diff (hunks)                (默认)
+  <leader>gc                查 commits (Telescope)          (默认)
+  <leader>gb                git blame 行                    (默认)
+  <leader>gB                在浏览器打开                    (默认)
+  ]h / [h                   下/上 git hunk                  (默认)
+  <leader>ghs               stage hunk                      (默认, gitsigns)
+  <leader>ghu               undo stage hunk                 (默认)
+  <leader>ghr               reset hunk                      (默认)
+  <leader>ghp               preview hunk                    (默认)
+
+================================================================
+  7. 诊断 / Trouble    <leader>x
+================================================================
+  <leader>xx                打开 Trouble (diagnostics)      (默认)
+  <leader>xX                Trouble buffer diagnostics      (默认)
+  <leader>xs                symbols (Trouble)               (默认)
+  <leader>xl                location list (Trouble)         (默认)
+  <leader>xq                quickfix (Trouble)              (默认)
+
+================================================================
+  8. 终端 / Toggle     <leader>t   （⚠ 你的 <leader>t* 已被 gtags 占用，见上方）
+================================================================
+  LazyVim 原本 <leader>t 组（toggle）大多被 gtags 覆盖。仍可用的：
+  <leader>tf                浮动终端 (toggleterm)           (默认, 未被覆盖)
+  <leader>th                终端 window                     (默认, 未被覆盖)
+  如需切换 spell/diagnostics 等默认 toggle，用命令式：
+    :set spell!   :set relativenumber!   :lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+
+================================================================
+  9. 插件管理 / 杂项
+================================================================
+  <leader>l                 打开 Lazy 插件管理面板         (默认)
+  <leader>li / <leader>lu   install / update               (默认)
+  <leader>ls                sync / lazy profile            (默认)
+  <leader>qq                全部退出 (quit all)            (默认)
+  <leader>ui                UI inspect / 看高亮            (默认)
+  <leader>uw                切换 wrap                       (默认)
+  <leader>ul                切换 relativenumber            (默认)
+  <leader>ud                切换 diagnostics               (默认)
+  <leader><Tab>             tab 相关（LazyVim Tab 组）     (默认)
+
+================================================================
+  10. 跳转 / 移动 增强（flash.nvim，LazyVim 默认）
+================================================================
+  s                         Flash 跳转（输入 2 字符定位）   (默认)
+  S                         Flash Treesitter 节点选区       (默认)
+  f / F / t / T             增强（带 flash 标签）           (默认)
+  ; / ,                     重复/反向                       (默认)
+
+================================================================
+  11. 编辑
+================================================================
+  gcc                       注释当前行 (mini.comment)       (默认)
+  gc{motion}                注释区域 (如 gcap 段落)        (默认)
+  sa{motion}{char}          加包围 (mini.surround)          (默认)
+  sd{char}                  删包围                          (默认)
+  sr{old}{new}              替换包围                        (默认)
+  ])/]}                     跳到括号对另一边                (默认)
+  <C-s> (Telescope 内)      flash 在结果里跳                (Melo, melo-telescope)
+  crc / crs / crm / cr-     camelCase/snake/Pascal/kebab    (Melo, vim-abolish)
+  :Subvert                  多形态智能替换                  (Melo, vim-abolish)
+
+================================================================
+  12. 插入模式
+================================================================
+  <C-h>                     左（本配置 normal 下是窗口左）  (Melo)
+  jk / jj                   退回 normal（如配了则用）       — 本配置未设，用 <Esc>
+  <C-n>/<C-p>               补全菜单 下/上 (noselect)       (Melo, options)
+
+================================================================
+  13. VSCode-Neovim 专用（vim.g.vscode 时生效）
+================================================================
+  zR / zM / zo / zc         调 VSCode foldAll/unfoldAll/fold/unfold
+  <leader>bb                书签 toggle
+  <leader>bc                清除全部书签
+  <leader>bp / <leader>bn   书签 上一个 / 下一个
+  <leader>wc                关当前 tab
+  <leader>wo                关其它 tab
+  <leader>wa                关全部 tab
+  <leader>r                 rename (VSCode)
+  gf / gb                   navigateForward / navigateBack
+
+================================================================
+  附：查看全部 keymap 的方法
+================================================================
+  :Telescope keymaps        列出所有 keymap
+  <leader>sk                同上 (LazyVim)
+  :verbose map <key>        查某个键是谁设的
+  :map                       看所有非递归映射
+  在 normal 按 <leader> 停一下 → which-key 弹出菜单提示
+
+  配置文件位置：
+    ~/.config/nvim/lua/config/melo.lua        个人 keymap/options
+    ~/.config/nvim/lua/config/keymaps.lua     追加 keymap
+    ~/.config/nvim/lua/plugins/melo-*.lua     插件相关 keymap
+    ~/.config/nvim/lua/plugins/melo-extras.lua hlslens/illuminate/colorizer/abolish
+================================================================
